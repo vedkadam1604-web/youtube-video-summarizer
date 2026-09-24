@@ -129,9 +129,6 @@ tests/             Automated tests
 
 ---
 
-## Extra
-
-**API:** the app also has an API. Open **http://localhost:8000/docs** to try it.
 
 **Run the tests:**
 ```bash
