@@ -1,0 +1,99 @@
+:root {
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --text: #16171a;
+  --muted: #62656e;
+  --border: #e4e5e9;
+  --accent: #e5322d;
+  --accent-soft: #fde8e7;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1012;
+    --card: #17181c;
+    --text: #ececef;
+    --muted: #9a9ca5;
+    --border: #2a2c32;
+    --accent: #ff5a52;
+    --accent-soft: #3a1c1b;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+}
+a { color: var(--accent); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 48px 16px; }
+.hero { text-align: center; margin-bottom: 32px; }
+h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 4px; letter-spacing: -0.02em; }
+h2 { margin: 0 0 4px; font-size: 1.3rem; line-height: 1.3; }
+h3 { margin: 0 0 12px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+h3:not(:first-child) { margin-top: 24px; }
+.sub, .muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+
+.search { display: flex; gap: 8px; max-width: 680px; margin: 24px auto 0; }
+.search input {
+  flex: 1; min-width: 0; padding: 14px 16px; font-size: 1rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--card); color: var(--text); outline: none;
+}
+.search input:focus { border-color: var(--accent); }
+button {
+  padding: 0 22px; font-size: 1rem; font-weight: 600; cursor: pointer;
+  border: none; border-radius: var(--radius); background: var(--accent); color: #fff;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+button.ghost {
+  padding: 8px 14px; font-size: 0.85rem; background: transparent;
+  color: var(--text); border: 1px solid var(--border); margin-top: 8px;
+}
+.error { color: var(--accent); margin-top: 12px; }
+
+.loading { text-align: center; padding: 48px 0; color: var(--muted); }
+.spinner {
+  width: 36px; height: 36px; margin: 0 auto 12px; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--accent);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; }
+.video-card {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 16px;
+}
+.player { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+.player iframe, .player > div { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.tag { background: var(--accent-soft); color: var(--accent); padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; }
+
+.tldr { margin-bottom: 16px; border-left: 4px solid var(--accent); }
+.tldr p { margin: 4px 0 0; font-size: 1.1rem; font-weight: 500; }
+.label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.points, .chapters { list-style: none; margin: 0; padding: 0; }
+.points li, .chapters li { display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+.points li:first-child, .chapters li:first-child { border-top: none; }
+.ts {
+  flex: none; font: 600 0.8rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  padding: 6px 8px; height: fit-content; border-radius: 6px;
+  background: var(--accent-soft); color: var(--accent); text-decoration: none;
+}
+.ts:hover { filter: brightness(0.95); }
+.chapters strong { display: block; }
+.chapters p { margin: 2px 0 0; color: var(--muted); font-size: 0.92rem; }
+footer { text-align: center; margin-top: 48px; }
+
+@media (max-width: 760px) {
+  .wrap { padding-top: 32px; }
+  .video-card, .grid { grid-template-columns: 1fr; }
+  .search { flex-direction: column; }
+  .search button { padding: 14px; }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YouTube Summarizer</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1>YouTube Summarizer</h1>
+      <p class="sub">Paste a link. Get the key points, chapters and clickable timestamps.</p>
+      <form id="form" class="search" autocomplete="off">
+        <input id="url" type="text" placeholder="https://www.youtube.com/watch?v=…" aria-label="YouTube URL" required />
+        <button id="submit" type="submit">Summarize</button>
+      </form>
+      <p id="error" class="error" role="alert" hidden></p>
+    </header>
+
+    <section id="loading" class="loading" hidden>
+      <div class="spinner"></div>
+      <p id="loading-text">Fetching transcript…</p>
+    </section>
+
+    <section id="result" hidden>
+      <div class="video-card">
+        <div class="player"><div id="player"></div></div>
+        <div class="meta">
+          <h2 id="title"></h2>
+          <p id="channel" class="muted"></p>
+          <div id="topics" class="tags"></div>
+          <p id="details" class="muted small"></p>
+          <button id="copy" class="ghost" type="button">Copy as Markdown</button>
+        </div>
+      </div>
+
+      <div class="card tldr">
+        <span class="label">TL;DR</span>
+        <p id="tldr"></p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Summary</h3>
+          <p id="summary"></p>
+          <h3>Key points</h3>
+          <ul id="key-points" class="points"></ul>
+        </div>
+        <div class="card">
+          <h3>Chapters</h3>
+          <ol id="chapters" class="chapters"></ol>
+        </div>
+      </div>
+    </section>
+
+    <footer class="muted small">Built with FastAPI + OpenAI · <a href="/docs">API docs</a></footer>
+  </main>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
